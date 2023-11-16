@@ -4,8 +4,6 @@ import axios from "axios";
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
-
-  // localStorage'dan tamamlandı durumlarını al veya varsayılan bir durum kullan
   const initialCompleted = JSON.parse(localStorage.getItem("completed")) || {};
   const [completed, setCompleted] = useState(initialCompleted);
 
