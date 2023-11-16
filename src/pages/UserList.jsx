@@ -4,6 +4,7 @@ import axios from "axios";
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
+  const [completed, setCompleted] = useState({});
 
   useEffect(() => {
     const jsonBlobUrl = "https://jsonblob.com/api/jsonBlob/1170375797302484992";
@@ -19,9 +20,15 @@ const UserList = () => {
       });
   }, []);
 
+  // Kart üzerindeki işlem tamamlandığında
+  const handleCompleted = (index) => {
+    // İlgili kartın tamamlanma durumunu güncelle
+    setCompleted({ ...completed, [index]: true });
+  };
+
   return (
     <div className="user-list">
-      <div className="bg-white rounded-lg shadow-lg p-4 mt-4 mx-5 ">
+      <div className="bg-white rounded-lg shadow-lg p-4 mt-4 mx-5">
         <a
           href="https://www.github.com/measses"
           target="_blank"
@@ -48,6 +55,14 @@ const UserList = () => {
             >
               LinkedIn Profili
             </a>
+            {!completed[index] && (
+              <button
+                onClick={() => handleCompleted(index)}
+                className="mt-2 bg-green-500 mx-3 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full transition-transform transform hover:scale-105"
+              >
+                Tamamlandı
+              </button>
+            )}
           </div>
         ))}
       </div>
