@@ -4,7 +4,10 @@ import axios from "axios";
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
-  const [completed, setCompleted] = useState({});
+
+  // localStorage'dan tamamlandı durumlarını al veya varsayılan bir durum kullan
+  const initialCompleted = JSON.parse(localStorage.getItem("completed")) || {};
+  const [completed, setCompleted] = useState(initialCompleted);
 
   useEffect(() => {
     const jsonBlobUrl = "https://jsonblob.com/api/jsonBlob/1170375797302484992";
@@ -20,10 +23,14 @@ const UserList = () => {
       });
   }, []);
 
-  // Kart üzerindeki işlem tamamlandığında
+
+  useEffect(() => {
+    localStorage.setItem("completed", JSON.stringify(completed));
+  }, [completed]);
+
   const handleCompleted = (index) => {
-    // İlgili kartın tamamlanma durumunu güncelle
-    setCompleted({ ...completed, [index]: true });
+    const updatedCompleted = { ...completed, [index.toString()]: !completed[index.toString()] };
+    setCompleted(updatedCompleted);
   };
 
   return (
@@ -55,14 +62,15 @@ const UserList = () => {
             >
               LinkedIn Profili
             </a>
-            {!completed[index] && (
-              <button
-                onClick={() => handleCompleted(index)}
-                className="mt-2 bg-green-500 mx-3 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full transition-transform transform hover:scale-105"
-              >
-                Tamamlandı
-              </button>
-            )}
+            <label className="mt-2  mx-3 text-white font-semibold py-2 px-4 rounded-full cursor-pointer">
+              <input
+                type="checkbox"
+                checked={completed[index.toString()]}
+                onChange={() => handleCompleted(index)}
+                className="mr-2 cursor-pointer"
+              />
+              İşaretle
+            </label>
           </div>
         ))}
       </div>
