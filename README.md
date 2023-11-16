@@ -15,8 +15,8 @@ Verilere şu linkten erişebilirsiniz: [JSON Veri](https://jsonblob.com/api/json
 
 Projeyi kullanmak için aşağıdaki adımları izleyin:
 
-1. Repo'yu klonlayın: `git clone https://github.com/KULLANICI_ADINIZ/PROJE_REPO.git`
-2. Proje dizinine gidin: `cd PROJE_REPO`
+1. Repo'yu klonlayın: `git clone https://github.com/measses/react-linkedin.git`
+2. Proje dizinine gidin: `cd react-linkedin`
 3. Projeyi çalıştırın: `npm start` veya `yarn start`
 
 ## Katkıda Bulunanlar
