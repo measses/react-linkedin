@@ -8,6 +8,9 @@ Bu projede kullanılan veriler, Altuğ Akgül'ün LinkedIn network postuna yapı
 
 Verilere şu linkten erişebilirsiniz: [JSON Veri](https://jsonblob.com/api/jsonBlob/1170375797302484992)
 
+## Demo
+react-linkedin-phi.vercel.app
+
 ## Kullanım
 
 Projeyi kullanmak için aşağıdaki adımları izleyin:
