@@ -4,10 +4,10 @@ import axios from "axios";
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
-  const initialCompleted = JSON.parse(localStorage.getItem("completed")) || {};
+  const initialCompleted = JSON.parse(localStorage.getItem("completed")) || {}; // { "0": true, "1": false, "2": true } şeklinde bir obje olacak.
   const [completed, setCompleted] = useState(initialCompleted);
 
-  useEffect(() => {
+  useEffect(() => { // JSON verilerini alıyoruz.
     const jsonBlobUrl = "https://jsonblob.com/api/jsonBlob/1170375797302484992";
 
     axios
@@ -22,7 +22,7 @@ const UserList = () => {
   }, []);
 
 
-  useEffect(() => {
+  useEffect(() => { // completed state'ini localStorage'e kaydediyoruz.
     localStorage.setItem("completed", JSON.stringify(completed));
   }, [completed]);
 
